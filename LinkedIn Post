@@ -1,0 +1,21 @@
+The requirement was when you select the month or hover your mouse over the table. You should see current and previous month's data on the tool-tip.
+
+To achieve the outcome, I followed the following steps:-
+
+1. Duplicate the "Sales" table and create a new one called "Sales_TT"
+
+2. Measure 
+	Last 2 Months = 
+		VAR SelMonth = Month(Max(Sales[Date]))
+		VAR Month = if(Month(Max(Sales_TT[Date]))>=Selmonth-1 && Month(Max(Sales_TT[Date]))<=Selmonth,SUM(Sales_TT[Sales]),blank())
+Return 
+	Month
+
+3. Important Piece, you need to use date from your first table i.e. "Sales" for your 1st Variable SelMonth, the rest of all entities should be from your duplicate / referenced table i.e. Sales_TT.
+
+4. For your visuals, use entities from Sales table. For Slicer, you entities from duplicate one "Sales_TT" table.
+
+Follow these steps and let me know if you have got a better solution than this.
+
+Many Thanks
+
